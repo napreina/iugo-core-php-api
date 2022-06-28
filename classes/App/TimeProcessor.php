@@ -24,6 +24,17 @@ use IUGO\Processor;
 class TimeProcessor extends Processor
 {
 	public function processRequest(HttpRequest $request) : HttpResponse {
-		return new HttpResponse(json_encode(['timestamp' => time()]), 'text/json');
+		try {
+			$response = [
+				'timestamp' => time()
+			];
+			return new HttpResponse(json_encode($response), 'text/json');
+		} catch (\Throwable $th) {
+			$response = [
+				"Error" => true, 
+				"ErrorMessage" => $th->getMessage()
+			];
+			return new HttpResponse(json_encode($response), 'text/json');
+		}
 	}
 }

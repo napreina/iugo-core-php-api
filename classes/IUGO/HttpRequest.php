@@ -79,6 +79,12 @@ class HttpRequest {
 		return $this->input;
 	}
 
+	public function getJsonInput() {
+		$input = $this->input;
+		$input = get_magic_quotes_gpc() ? stripslashes($input) : $input;
+		return json_decode($input, true);
+	}
+
 	public function getMethod () {
 		return $this->_SERVER['REQUEST_METHOD'];
 	}

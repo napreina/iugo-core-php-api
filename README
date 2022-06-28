@@ -1,0 +1,12 @@
+Usage:
+set your html root to the html directory, and redirect
+all requests to index.php
+
+e.g. for Apache:
+
+RewriteRule ^/[^\?]*(?:\?(.*))?$ index.php?$1 [L]
+
+or for lighttpd:
+
+url.rewrite-once = ("^/[^\?]*(?:\?(.*))?$" => "/index.php?$1")
+
