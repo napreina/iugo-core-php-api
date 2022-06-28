@@ -18,6 +18,8 @@ $processors = [
 
     'usersave' => new \App\User,
     'userload' => new \App\User,
+
+    'databaseformat' => new \App\DatabaseFormat,
 ];
 
 $request = new \IUGO\HttpRequest($_GET, $_POST, $_SERVER, file_get_contents('php://input'));
